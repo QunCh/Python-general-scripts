@@ -6,4 +6,3 @@ import pandas as pd
 s = np.random.normal(5,5, 1000)
 df = pd.DataFrame(s)
 df.to_excel('simulator.xlsx', index = False)
-np.random.normal(``)
