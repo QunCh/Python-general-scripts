@@ -3,19 +3,19 @@ import pandas as pd
 import numpy as np
 import os
 import matplotlib.pylab as plt
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report
 import sklearn.metrics
  # Feature Importance
 from sklearn import datasets
 from sklearn.ensemble import ExtraTreesClassifier
-
-os.chdir("C:\TREES")
+import matplotlib.pyplot as plt
+os.chdir(r"C:\Github\Python-general-scripts\dataset")
 
 #Load the dataset
 
-AH_data = pd.read_csv("tree_addhealth.csv")
+AH_data = pd.read_csv("addhealth.csv")
 data_clean = AH_data.dropna()
 
 data_clean.dtypes
@@ -47,6 +47,14 @@ predictions=classifier.predict(pred_test)
 sklearn.metrics.confusion_matrix(tar_test,predictions)
 sklearn.metrics.accuracy_score(tar_test, predictions)
 
+sklearn.metrics.classification_report(tar_test, predictions)
+sklearn.metrics.plot_roc_curve(classifier, pred_test, tar_test)
+sklearn.metrics.plot_confusion_matrix(classifier, pred_test, tar_test)
+sklearn.metrics.plot_precision_recall_curve(classifier, pred_test, tar_test)
+
+pred_prob = classifier.predict_proba(pred_test)[:,1]
+sklearn.metrics.roc_auc_score(tar_test, pred_prob)
+fpr, tpr, thresholds = sklearn.metrics.roc_curve(tar_test, pred_prob)
 
 # fit an Extra Trees model to the data
 model = ExtraTreesClassifier()

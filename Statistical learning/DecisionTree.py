@@ -12,12 +12,12 @@ import pandas as pd
 import numpy as np
 import os
 import matplotlib.pylab as plt
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report
 import sklearn.metrics
 
-os.chdir("C:\TREES")
+os.chdir(r"C:\Github\Python-general-scripts\dataset")
 
 """
 Data Engineering and Analysis
@@ -70,8 +70,9 @@ out = StringIO()
 tree.export_graphviz(classifier, out_file=out)
 import pydotplus
 graph=pydotplus.graph_from_dot_data(out.getvalue())
-Image(graph.create_png())
-
+#Image(graph.create_png())
+dir(graph)
+graph.write_pdf('tree.pdf')
 
 
 
