@@ -10,6 +10,8 @@ import pandas
 import statsmodels.api as sm
 import seaborn
 import statsmodels.formula.api as smf 
+import os
+os.chdir(r'C:\Github\Python-general-scripts\dataset')
 
 # bug fix for display formats to avoid run time errors
 pandas.set_option('display.float_format', lambda x:'%.2f'%x)
