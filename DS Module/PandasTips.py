@@ -1,5 +1,19 @@
 import pandas as pd
 
+# 读数
+
+path = r'C:\亚信\2020年11月5G经分会\20201028V2\5G投诉汇总数据20201028V4.xlsx'
+path = r'C:\Users\qunch\Documents\Tencent Files\393398415\FileRecv\89月份\tmp_PRD_COMPLAINT_202008_5gdengwang.txt'
+df = pd.read_table(path, header = None, sep = '|', error_bad_lines = False, engine = 'python')
+df = pd.read_table(path, header = None, usecols = [1],sep = '|', error_bad_lines = False,engine = 'python')
+
+df.head()
+
+df = pd.read_excel(path, header=1,usecols = 'A:G')
+df.head()
+
+
+#######
 
 people = {
     "first": ["Corey", 'Jane', 'John'], 
