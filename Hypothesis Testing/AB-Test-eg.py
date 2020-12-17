@@ -82,7 +82,8 @@ p = stats.t.sf(t, df=90187)*2
 lcb = d-1.96*s
 ucb = d+1.96*s
 print('t: ', t, '\n','p: ',p,'\n' 'Confidence Interval: ', (lcb, ucb))
-
+effect_size = d/0.392464	
+effect_size
 
 tab1 = pd.pivot_table(df,index='version', columns='retention_1',values = 'userid', aggfunc='count')
 tab2 = pd.pivot_table(df,index='version', columns='retention_7',values = 'userid', aggfunc='count')
