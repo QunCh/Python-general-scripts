@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 # 读数
 
@@ -12,6 +13,7 @@ df.head()
 df = pd.read_excel(path, header=1,usecols = 'A:G')
 df.head()
 
+df = pd.read_excel(r'C:\test.xlsx', sheet_name='Sheet1')
 
 #######
 
@@ -43,3 +45,16 @@ pd.concat([df1, df3], join="inner") # keep same columns
 
 %%time
 df4 = df3[(df3['avg time'>500]) | (df3['distinct id']>500)]
+
+
+# Window Functions
+df['tmr_amt'] = df['amt'].shift(-1)
+df['cumsum'] = df.sort_values('id',ascending = False).groupby('g')['amt'].cumsum()
+df['g'] = 1
+df.loc[23,'g'] = 2
+
+df['g_sum'] = (df
+                .groupby('g')
+                ['amt']
+                .transform('sum'))
+df['rolling_sum'] = df['amt'].rolling(2).sum()
