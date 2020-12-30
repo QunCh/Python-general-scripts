@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import os
 
 # 读数
 
@@ -58,3 +59,4 @@ df['g_sum'] = (df
                 ['amt']
                 .transform('sum'))
 df['rolling_sum'] = df['amt'].rolling(2).sum()
+

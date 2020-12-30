@@ -27,3 +27,10 @@ from datetime import datetime
 bday = datetime(1993,10,11)
 sentence = f'My bday is on {bday:%Y%m%d}'
 sentence
+
+
+
+### string functions
+astr = '2020-12-21'
+astr.__contains__('20')
+astr.find()
