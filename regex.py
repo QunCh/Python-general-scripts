@@ -1,4 +1,5 @@
 import re
+import pandas as pd
 
 text_to_search = '''
 abcdefghijklmnopqurtuvwxyz
@@ -49,3 +50,12 @@ for match in matches:
 pattern = re.compile(r'start', re.I)
 matches = pattern.search(sentence)
 print(matches)
+
+arr = ['a1', 'ab3', 'hello2', '3a4g']
+df = pd.DataFrame(arr)
+df
+
+pattern = re.compile(r'[0-9]')
+
+df['num'] = df[0].apply(lambda x: ''.join(pattern.findall(x)))
+df['num'] = df[0].map(lambda x: ''.join(pattern.findall(x)))
