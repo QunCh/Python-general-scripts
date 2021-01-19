@@ -1,5 +1,9 @@
 from scipy.stats import binom
+from scipy import stats
 import numpy as np
+
+# 根据t值计算p-value
+stats.t.sf(2.17,df=4.73)*2
 
 n, p = 15, 0.5
 alist = []
