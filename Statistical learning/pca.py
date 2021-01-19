@@ -1,5 +1,6 @@
 import pandas as pd 
 import matplotlib.pyplot as plt
+import numpy as np
 
 from sklearn.datasets import load_iris
 from sklearn.preprocessing import StandardScaler
@@ -23,3 +24,9 @@ pca.explained_variance_
 
 fig = plt.figure(figsize = (6,5))
 plt.scatter(x_pca[:,0],x_pca[:,1], c=Y, s=20)
+
+# 拐点法图
+pca = PCA().fit(X_scaled)
+plt.plot(np.cumsum(pca.explained_variance_ratio_))
+plt.xlabel('number of components')
+plt.ylabel('cumulative explained variance')
